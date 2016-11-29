@@ -1,29 +1,28 @@
-package lecturaArchivos;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Promedio;
 
-// Ejemplo tomado del libro 
-// D EITEL , P AUL J. Y H ARVEY M. D EITEL
-// CÓMO PROGRAMAR EN J AVA . Séptima edición
-// fines educativos
-// Prueba de la clase ArchivoTexto.
-
-// Este programa lee un archivo de texto y muestra cada registro.
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.IllegalStateException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
-public class LeerArchivoTexto {
-
+/**
+ *
+ * @author SALAS
+ */
+public class ArchivosPromedio {
     private Scanner entrada;
 
     // permite al usuario abrir el archivo
     public void abrirArchivo() {
         try {
-            entrada = new Scanner(new File("datos.txt"));
+            entrada = new Scanner(new File("promedio.txt"));
         } // fin de try
         catch (FileNotFoundException fileNotFoundException) {
             System.err.println("Error al abrir el archivo.");
@@ -36,21 +35,23 @@ public class LeerArchivoTexto {
 
         try // lee registros del archivo, usando el objeto Scanner
         {
-            int sumaTotal = 0;
+            int promedio = 0;
             int suma = 0;
+            int mayorPromedio = 0;
             while (entrada.hasNext()) {
                 String linea = entrada.nextLine();
                 //System.out.println(linea);
                 ArrayList<String> linea_partes = new ArrayList<String>(Arrays.asList(linea.split(";")));
-                System.out.println(linea_partes.get(0));
-                suma = suma + Integer.parseInt(linea_partes.get(0));
-                for (int i = 0; i <= 2; i++) {                   
-                    sumaTotal = sumaTotal + Integer.parseInt(linea_partes.get(i));
+                //System.out.println(linea_partes.get(0));
+                suma = Integer.parseInt(linea_partes.get(2)) + Integer.parseInt(linea_partes.get(3));
+                promedio = suma / 2;
+                System.out.println(linea_partes.get(0) + " tiene un promedio de: " + promedio);
+                if (promedio >= mayorPromedio) {
+                    mayorPromedio = promedio;
                 }
-            } // fin de while
-            System.out.println("La suma de la posicion 0 es: " + suma);
-            System.out.println("La suma total es: " + sumaTotal);
-        } // fin de try
+            }
+            System.out.println("El mayor promedio es " + mayorPromedio);
+        }
         catch (NoSuchElementException elementException) {
             System.err.println("El archivo no esta bien formado.");
             entrada.close();
@@ -68,5 +69,4 @@ public class LeerArchivoTexto {
             entrada.close(); // cierra el archivo
         }
     } // fin del metodo cerrarArchivo
-} // fin de la clase LeerArchivoTexto
-
+}

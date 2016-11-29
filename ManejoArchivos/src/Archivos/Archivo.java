@@ -1,25 +1,18 @@
-package escrituraArchivos;
+package Archivos;
 
-// Ejemplo tomado del libro 
-// D EITEL , P AUL J. Y H ARVEY M. D EITEL
-// CÓMO PROGRAMAR EN J AVA . Séptima edición
-// fines educativos
-// Uso de la clase Formatter para escribir datos en un archivo de texto.
 import java.io.FileNotFoundException;
-import java.lang.SecurityException;
 import java.util.Formatter;
 import java.util.FormatterClosedException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class ArchivoTexto {
-
+public class Archivo {
     private Formatter salida; // objeto usado para enviar texto al archivo
 
     // permite al usuario abrir el archivo
     public void abrir_archivo() {
         try {
-            salida = new Formatter("ejemplo-archivo.txt");
+            salida = new Formatter("calificaciones.txt");
         } // fin de try
         catch (SecurityException securityException) {
             System.err.println(
@@ -45,15 +38,17 @@ public class ArchivoTexto {
             try // envía valores al archivo
             {
                 // obtiene los datos que se van a enviar
-                System.out.println("Ingrese la edad de la persona (debe ser entero)");
-                int edad = entrada.nextInt(); // lee la edad 
                 System.out.println("Ingrese el nombre de la persona");
                 String nombre = entrada.next(); // lee el nombre
                 System.out.println("Ingrese el apellidos de la persona");
                 String apellido = entrada.next(); // lee el apellido
+                System.out.println("Ingrese la calificación 1: ");
+                double calif1 = entrada.nextDouble();
+                System.out.println("Ingrese la calificación 2: ");
+                double calif2 = entrada.nextDouble();
 
                 // escribe el nuevo registro (escribe en el archivo
-                salida.format("%d|%s|%s\n", edad, nombre, apellido);
+                salida.format("%s;%s;%.2f;%.2f\n", nombre, apellido, calif1, calif2);
 
                 System.out.println("Desea ingresar más datos si (1), no(2)");
                 int valor = entrada.nextInt();
@@ -79,6 +74,5 @@ public class ArchivoTexto {
         if (salida != null) {
             salida.close();
         }
-    } // fin del método cerrarArchivo
-} // fin de la clase ArchivoTexto
-
+    }
+}

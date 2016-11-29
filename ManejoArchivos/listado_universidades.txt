@@ -1,2 +1,2 @@
-100|200|UTPL|Loja
-300|1000|UNL|Quito
+5|7|UPS|Cuenca
+8|9|UNL|Loja

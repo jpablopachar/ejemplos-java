@@ -1,0 +1,4 @@
+Juan;Pachar;10;15
+Junior;Vasquez;5;18
+William;Borja;20;20
+Michelle;Sisalima;13;1

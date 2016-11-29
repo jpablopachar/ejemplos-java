@@ -18,4 +18,3 @@ public class PruebaLeerArchivoTexto
       aplicacion.cerrarArchivo();
    } // fin de main
 } // fin de la clase PruebaLeerArchivoTexto
-
