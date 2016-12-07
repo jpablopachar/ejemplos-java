@@ -1,0 +1,9 @@
+	Comercial Ventas y Reventas
+Nombre: Daniel Pachar
+Ciudad: Cuenca
+Producto	Cantidad	Precio
+SAL		2		2,00
+TALLARINES		1		1,50
+Subtotal: 3,50
+IVA: 0,49
+Total: 3,99
